@@ -3,73 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Educativa | Inicio</title>
-    <link rel="stylesheet" href="css/Styles.css">
+    <title>VIA | Tu Puente Académico</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container header-flex">
-            <div class="logo">
-                <a href="index.html"><strong>EduInnovación</strong></a>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bridge"></i> VIA <span> Puente Académico</span>
+        </div>
+        <ul class="nav-links">
+            <!-- Nota cómo ahora los enlaces apuntan a los archivos html -->
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#areas">Áreas Educativas</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="contacto.html" class="btn-primary-small">Contáctanos</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Sección Hero (Principal) -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="badge">Tutorías • Asesorías • Acompañamiento</span>
+            <h1>Te ayudamos a superar tus retos <span>Universitarios</span></h1>
+            <p>Asesoramos tus trabajos, exámenes, informes, tesis y proyectos. Más que una ayuda, somos tu puente hacia el éxito académico.</p>
+            <div class="hero-buttons">
+                <a href="#areas" class="btn-primary">Ver Materias</a>
+                <a href="contacto.html" class="btn-secondary">Solicitar Asesoría</a>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="active">Inicio</a></li>
-                    <li><a href="#">Programas</a></li>
-                    <li><a href="contacto.html">Inscripciones / Contacto</a></li>
-                    <li><a href="#" class="btn-nav-auth">Iniciar Sesión</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Tu futuro educativo empieza aquí</h1>
-                <p>Accede a un modelo de aprendizaje flexible, innovador y adaptado a tus necesidades. Diseña tu propio camino hacia el éxito académico.</p>
-                <div class="hero-actions">
-                    <a href="contacto.html" class="btn-primary">Iniciar Inscripción</a>
-                    <a href="#" class="btn-secondary">Saber Más</a>
-                </div>
-            </div>
-            <div class="hero-image-placeholder">
-                <div class="image-box">Espacio para Imagen Principal</div>
-            </div>
+    <!-- SECCIÓN TESTIMONIOS (Ahora sí, dentro del body) -->
+    <section class="testimonios-slider">
+        <div class="slider-track">
+            <img src="tu_imagen_1.jpg" alt="Testimonio 1">
+            <img src="tu_imagen_2.jpg" alt="Testimonio 2">
+            <img src="tu_imagen_3.jpg" alt="Testimonio 3">
+            <img src="tu_imagen_1.jpg" alt="Testimonio 1">
+            <img src="tu_imagen_2.jpg" alt="Testimonio 2">
+            <img src="tu_imagen_3.jpg" alt="Testimonio 3">
         </div>
     </section>
 
-    <section class="features-section">
-        <div class="container">
-            <h2 class="section-title">¿Por qué elegir nuestro modelo?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Flexibilidad Total</h3>
-                    <p>Estudia a tu propio ritmo desde cualquier lugar, con soporte constante.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Documentación Digital</h3>
-                    <p>Olvídate del papeleo físico. Gestiona tu registro de manera 100% virtual.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Plataforma Moderna</h3>
-                    <p>Tecnología intuitiva diseñada para potenciar tus habilidades técnicas y prácticas.</p>
-                </div>
-            </div>
+    <!-- Sección de Áreas y Materias Dinámicas -->
+    <section id="areas" class="areas-section">
+        <div class="section-title">
+            <h2>Nuestras Áreas de Estudio</h2>
+            <p>Selecciona un área para ver las carreras y materias en las que podemos ayudarte.</p>
         </div>
+        
+        <div class="filters" id="filters-container"></div>
+        <div class="careers-grid" id="careers-grid"></div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container footer-content">
-            <p>&copy; 2026 EduInnovación. Todos los derechos reservados.</p>
-            <div class="footer-links">
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Términos de Servicio</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Botones Flotantes (Redes) -->
+    <div class="floating-socials">
+        <a href="https://www.instagram.com/via.puente.academico/" target="_blank" class="float-btn ig">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/584122027898" target="_blank" class="float-btn wa">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
 
+    <!-- El script vital que se había borrado -->
     <script src="js/main.js"></script>
 </body>
 </html>

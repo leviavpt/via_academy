@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción | VIA Académico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-bridge"></i> VIA <span>Académico</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#inicio">Inicio</a></li>
+            <li><a href="index.html#areas">Áreas Educativas</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="contacto.html" class="btn-primary-small">Contáctanos</a></li>
+        </ul>
+    </nav>
+
+    <section class="inscripcion-section">
+        <div class="section-title">
+            <h2>Finaliza tu Inscripción</h2>
+            <p id="curso-info-text">Cargando detalles de tu selección...</p>
+        </div>
+        
+        <div class="form-container native-form-container">
+            <form action="https://formspree.io/f/xbdbwpwz" method="POST" class="custom-form">
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label>Curso seleccionado:</label>
+            <input type="text" id="curso-input" name="Curso_Seleccionado" readonly> 
+        </div>
+        <div class="form-group">
+            <label>Precio a pagar:</label>
+            <input type="text" id="precio-input" name="Precio_Marcado" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Nombre completo:</label>
+        <input type="text" name="Nombre_Completo" placeholder="Ej. Juan Pérez" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Correo electrónico:</label>
+        <input type="email" name="Correo" placeholder="ejemplo@correo.com" required>
+    </div>
+
+    <div class="form-group">
+        <label>Teléfono / WhatsApp:</label>
+        <input type="tel" name="Telefono" placeholder="+00 123 456 789" required>
+    </div>
+
+    <button type="submit" class="btn-primary btn-submit-full">Completar Inscripción</button>
+</form>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
