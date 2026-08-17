@@ -3,80 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIA | Tu Puente Académico</title>
-    <!-- Google Fonts -->
+    <title>VIA | Tu Puente Académico - Asesorías y Tutorías Universitarias</title>
+    <meta name="description" content="VIA Puente Académico: Asesorías personalizadas en Ingeniería, Ciencias, Salud, Negocios y Sociales. Tutorías para tesis, exámenes, proyectos y trabajos universitarios. ¡Contáctanos!">
+    <meta name="keywords" content="asesorías universitarias, tutorías académicas, ayuda tesis, trabajos universitarios, apoyo estudiantil, VIA académico">
+    <meta name="author" content="VIA Puente Académico">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://via-puente-academico.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://via-puente-academico.com/">
+    <meta property="og:title" content="VIA | Tu Puente Académico - Asesorías y Tutorías Universitarias">
+    <meta property="og:description" content="Asesoramos tus trabajos, exámenes, informes, tesis y proyectos. Más que una ayuda, somos tu puente hacia el éxito académico.">
+    <meta property="og:image" content="https://via-puente-academico.com/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://via-puente-academico.com/">
+    <meta property="twitter:title" content="VIA | Tu Puente Académico">
+    <meta property="twitter:description" content="Asesorías y tutorías universitarias personalizadas. Tu puente hacia el éxito académico.">
+    <meta property="twitter:image" content="https://via-puente-academico.com/assets/og-image.jpg">
+    
+    <!-- Google Fonts con preconnect para rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tu CSS -->
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VIA Puente Académico",
+      "url": "https://via-puente-academico.com",
+      "logo": "https://via-puente-academico.com/assets/logo.png",
+      "sameAs": [
+        "https://www.instagram.com/via.puente.academico/",
+        "https://wa.me/584122027898"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+58-412-202-7898",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      }
+    }
+    </script>
+    <script type="application/ld+json>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VIA Puente Académico",
+      "url": "https://via-puente-academico.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://via-puente-academico.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Navegación -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="logo">
             <i class="fa-solid fa-bridge"></i> VIA <span> Puente Académico</span>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" role="menubar">
             <!-- Nota cómo ahora los enlaces apuntan a los archivos html -->
-            <li><a href="index.html#inicio">Inicio</a></li>
-            <li><a href="index.html#areas">Áreas Educativas</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="contacto.html" class="btn-primary-small">Contáctanos</a></li>
+            <li role="none"><a href="index.html#inicio" role="menuitem">Inicio</a></li>
+            <li role="none"><a href="index.html#areas" role="menuitem">Áreas Educativas</a></li>
+            <li role="none"><a href="cursos.html" role="menuitem">Cursos</a></li>
+            <li role="none"><a href="contacto.html" class="btn-primary-small" role="menuitem">Contáctanos</a></li>
         </ul>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
+        <div class="menu-toggle" id="mobile-menu" role="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links" tabindex="0">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Sección Hero (Principal) -->
-    <header id="inicio" class="hero">
+    <header id="inicio" class="hero" role="banner">
         <div class="hero-content">
             <span class="badge">Tutorías • Asesorías • Acompañamiento</span>
             <h1>Te ayudamos a superar tus retos <span>Universitarios</span></h1>
             <p>Asesoramos tus trabajos, exámenes, informes, tesis y proyectos. Más que una ayuda, somos tu puente hacia el éxito académico.</p>
             <div class="hero-buttons">
-                <a href="#areas" class="btn-primary">Ver Materias</a>
-                <a href="contacto.html" class="btn-secondary">Solicitar Asesoría</a>
+                <a href="#areas" class="btn-primary" role="button">Ver Materias</a>
+                <a href="contacto.html" class="btn-secondary" role="button">Solicitar Asesoría</a>
             </div>
         </div>
     </header>
 
     <!-- SECCIÓN TESTIMONIOS (Ahora sí, dentro del body) -->
-    <section class="testimonios-slider">
-        <div class="slider-track">
-            <img src="tu_imagen_1.jpg" alt="Testimonio 1">
-            <img src="tu_imagen_2.jpg" alt="Testimonio 2">
-            <img src="tu_imagen_3.jpg" alt="Testimonio 3">
-            <img src="tu_imagen_1.jpg" alt="Testimonio 1">
-            <img src="tu_imagen_2.jpg" alt="Testimonio 2">
-            <img src="tu_imagen_3.jpg" alt="Testimonio 3">
+    <section class="testimonios-slider" aria-label="Testimonios de estudiantes" role="region">
+        <div class="slider-track" role="list">
+            <img src="tu_imagen_1.jpg" alt="Testimonio de estudiante satisfecho 1" role="listitem" loading="lazy">
+            <img src="tu_imagen_2.jpg" alt="Testimonio de estudiante satisfecho 2" role="listitem" loading="lazy">
+            <img src="tu_imagen_3.jpg" alt="Testimonio de estudiante satisfecho 3" role="listitem" loading="lazy">
+            <img src="tu_imagen_1.jpg" alt="Testimonio de estudiante satisfecho 1" role="listitem" loading="lazy">
+            <img src="tu_imagen_2.jpg" alt="Testimonio de estudiante satisfecho 2" role="listitem" loading="lazy">
+            <img src="tu_imagen_3.jpg" alt="Testimonio de estudiante satisfecho 3" role="listitem" loading="lazy">
         </div>
     </section>
 
     <!-- Sección de Áreas y Materias Dinámicas -->
-    <section id="areas" class="areas-section">
+    <section id="areas" class="areas-section" aria-labelledby="areas-title">
         <div class="section-title">
-            <h2>Nuestras Áreas de Estudio</h2>
+            <h2 id="areas-title">Nuestras Áreas de Estudio</h2>
             <p>Selecciona un área para ver las carreras y materias en las que podemos ayudarte.</p>
         </div>
         
-        <div class="filters" id="filters-container"></div>
-        <div class="careers-grid" id="careers-grid"></div>
+        <div class="filters" id="filters-container" role="tablist" aria-label="Filtros de áreas académicas"></div>
+        <div class="careers-grid" id="careers-grid" role="tabpanel" aria-label="Carreras y materias disponibles"></div>
     </section>
+
+    </main>
 
     <!-- Botones Flotantes (Redes) -->
     <div class="floating-socials">
-        <a href="https://www.instagram.com/via.puente.academico/" target="_blank" class="float-btn ig">
-            <i class="fa-brands fa-instagram"></i>
+        <a href="https://www.instagram.com/via.puente.academico/" target="_blank" rel="noopener noreferrer" class="float-btn ig" aria-label="Síguenos en Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
         </a>
-        <a href="https://wa.me/584122027898" target="_blank" class="float-btn wa">
-            <i class="fa-brands fa-whatsapp"></i>
+        <a href="https://wa.me/584122027898" target="_blank" rel="noopener noreferrer" class="float-btn wa" aria-label="Escríbenos por WhatsApp">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
         </a>
     </div>
 
     <!-- El script vital que se había borrado -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

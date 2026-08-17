@@ -155,3 +155,238 @@ document.addEventListener("DOMContentLoaded", () => {
             precioInput.value = "$0.00";
         }
     }
+
+    // ==========================================
+    // 6. MENÚ MÓVIL ACCESIBLE (Se ejecuta en TODAS las páginas)
+    // ==========================================
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenu && navLinks) {
+        mobileMenu.addEventListener('click', () => {
+            const isExpanded = mobileMenu.getAttribute('aria-expanded') === 'true';
+            mobileMenu.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en un enlace (mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Cerrar menú con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+                mobileMenu.focus();
+            }
+        });
+    }
+
+    // ==========================================
+    // 7. VALIDACIÓN DE FORMULARIOS CLIENT-SIDE
+    // ==========================================
+    function initFormValidation(form) {
+        if (!form) return;
+        
+        const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        // Validación en tiempo real
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => {
+                if (input.classList.contains('error')) {
+                    validateField(input);
+                }
+            });
+        });
+
+        function validateField(field) {
+            const errorMsg = field.parentNode.querySelector('.error-message');
+            let isValid = true;
+            let message = '';
+
+            // Validar required
+            if (field.required && !field.value.trim()) {
+                isValid = false;
+                message = 'Este campo es obligatorio';
+            }
+            // Validar email
+            else if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+                isValid = false;
+                message = 'Ingresa un correo válido';
+            }
+            // Validar tel
+            else if (field.type === 'tel' && field.value && !/^[\d\s\+\-\(\)]{7,}$/.test(field.value)) {
+                isValid = false;
+                message = 'Ingresa un teléfono válido';
+            }
+            // Validar URL
+            else if (field.type === 'url' && field.value && !/^https?:\/\/.+/.test(field.value)) {
+                isValid = false;
+                message = 'Ingresa una URL válida (incluye http:// o https://)';
+            }
+
+            if (!isValid) {
+                field.classList.add('error');
+                field.setAttribute('aria-invalid', 'true');
+                if (!errorMsg) {
+                    const msg = document.createElement('span');
+                    msg.className = 'error-message';
+                    msg.style.cssText = 'color: var(--secondary); font-size: 0.85rem; margin-top: 0.3rem; display: block;';
+                    msg.setAttribute('role', 'alert');
+                    msg.textContent = message;
+                    field.parentNode.appendChild(msg);
+                } else {
+                    errorMsg.textContent = message;
+                }
+            } else {
+                field.classList.remove('error');
+                field.setAttribute('aria-invalid', 'false');
+                if (errorMsg) errorMsg.remove();
+            }
+
+            return isValid;
+        }
+
+        // Validar todo el formulario al enviar
+        form.addEventListener('submit', async (e) => {
+            let allValid = true;
+            inputs.forEach(input => {
+                if (!validateField(input)) allValid = false;
+            });
+
+            // Verificar honeypot
+            const honeypot = form.querySelector('.honeypot input');
+            if (honeypot && honeypot.value) {
+                return; // Spam detectado, no enviar (pero no bloquear para no revelar la técnica)
+            }
+
+            if (!allValid) {
+                e.preventDefault();
+                const firstError = form.querySelector('.error');
+                if (firstError) firstError.focus();
+            } else if (submitBtn) {
+                // Estado de carga
+                submitBtn.disabled = true;
+                submitBtn.dataset.originalText = submitBtn.textContent;
+                submitBtn.innerHTML = '<span class="spinner" aria-hidden="true"></span> Enviando...';
+                submitBtn.style.position = 'relative';
+                
+                // El formulario se envía normalmente a Formspree
+                // Si quieres usar AJAX, descomenta lo siguiente y comenta el envío normal:
+                /*
+                e.preventDefault();
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (response.ok) {
+                        showToast('¡Mensaje enviado correctamente! Te responderemos pronto.', 'success');
+                        form.reset();
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                } catch (err) {
+                    showToast('Error al enviar. Intenta de nuevo o contáctanos por WhatsApp.', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = submitBtn.dataset.originalText;
+                }
+                */
+            }
+        });
+    }
+
+    // Inicializar validación en formularios
+    document.querySelectorAll('.custom-form').forEach(form => {
+        initFormValidation(form);
+    });
+
+    // ==========================================
+    // 8. SLIDER DE TESTIMONIOS ACCESIBLE
+    // ==========================================
+    const sliderTrack = document.querySelector('.slider-track');
+    if (sliderTrack) {
+        const sliderContainer = sliderTrack.closest('.testimonios-slider');
+        
+        // Pausar animación al hacer hover/focus
+        sliderContainer.addEventListener('mouseenter', () => {
+            sliderTrack.style.animationPlayState = 'paused';
+        });
+        sliderContainer.addEventListener('mouseleave', () => {
+            sliderTrack.style.animationPlayState = 'running';
+        });
+        sliderContainer.addEventListener('focusin', () => {
+            sliderTrack.style.animationPlayState = 'paused';
+        });
+        sliderContainer.addEventListener('focusout', () => {
+            sliderTrack.style.animationPlayState = 'running';
+        });
+    }
+
+    // ==========================================
+    // 9. TOAST NOTIFICATIONS (para feedback)
+    // ==========================================
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'polite');
+        toast.textContent = message;
+        
+        const styles = `
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 600;
+                z-index: 9999;
+                opacity: 0;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            }
+            .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+            .toast-success { background: #25d366; }
+            .toast-error { background: #ff3366; }
+            .toast-info { background: #1800ad; }
+            .spinner {
+                display: inline-block;
+                width: 16px; height: 16px;
+                border: 2px solid transparent;
+                border-top-color: currentColor;
+                border-radius: 50%;
+                animation: spin 0.8s linear infinite;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+            @keyframes spin { to { transform: rotate(360deg); } }
+        `;
+        
+        if (!document.getElementById('toast-styles')) {
+            const styleSheet = document.createElement('style');
+            styleSheet.id = 'toast-styles';
+            styleSheet.textContent = styles;
+            document.head.appendChild(styleSheet);
+        }
+        
+        document.body.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.add('show'));
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }

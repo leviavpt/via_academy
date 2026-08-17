@@ -3,65 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripción | VIA Académico</title>
+    <title>Inscripción | VIA Puente Académico - Finaliza tu Registro</title>
+    <meta name="description" content="Completa tu inscripción a los cursos de VIA Puente Académico. Matemáticas, Física, Programación y más. Pago seguro y acceso inmediato.">
+    <meta name="keywords" content="inscripción cursos universitarios, matrícula online, pago cursos, VIA académico inscripción">
+    <meta name="author" content="VIA Puente Académico">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://via-puente-academico.com/inscripcion.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://via-puente-academico.com/inscripcion.html">
+    <meta property="og:title" content="Inscripción | VIA Puente Académico">
+    <meta property="og:description" content="Finaliza tu inscripción a nuestros cursos universitarios. Acceso inmediato tras el pago.">
+    <meta property="og:image" content="https://via-puente-academico.com/assets/og-inscripcion.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Inscripción | VIA Puente Académico">
+    <meta property="twitter:description" content="Completa tu registro y accede a los cursos universitarios.">
+    <meta property="twitter:image" content="https://via-puente-academico.com/assets/og-inscripcion.jpg">
+    
+    <!-- Google Fonts con preconnect para rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
         <div class="logo">
             <i class="fa-solid fa-bridge"></i> VIA <span>Académico</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html#inicio">Inicio</a></li>
-            <li><a href="index.html#areas">Áreas Educativas</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="contacto.html" class="btn-primary-small">Contáctanos</a></li>
+        <ul class="nav-links" role="menubar">
+            <li role="none"><a href="index.html#inicio" role="menuitem">Inicio</a></li>
+            <li role="none"><a href="index.html#areas" role="menuitem">Áreas Educativas</a></li>
+            <li role="none"><a href="cursos.html" role="menuitem">Cursos</a></li>
+            <li role="none"><a href="contacto.html" class="btn-primary-small" role="menuitem">Contáctanos</a></li>
         </ul>
+        <div class="menu-toggle" id="mobile-menu" role="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links" tabindex="0">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </div>
     </nav>
 
-    <section class="inscripcion-section">
+    <main id="main-content">
+    <section class="inscripcion-section" aria-labelledby="inscripcion-title">
         <div class="section-title">
-            <h2>Finaliza tu Inscripción</h2>
+            <h2 id="inscripcion-title">Finaliza tu Inscripción</h2>
             <p id="curso-info-text">Cargando detalles de tu selección...</p>
         </div>
         
         <div class="form-container native-form-container">
-            <form action="https://formspree.io/f/xbdbwpwz" method="POST" class="custom-form">
+            <form action="https://formspree.io/f/xbdbwpwz" method="POST" class="custom-form" novalidate>
     
     <div class="form-row">
         <div class="form-group">
-            <label>Curso seleccionado:</label>
-            <input type="text" id="curso-input" name="Curso_Seleccionado" readonly> 
+            <label for="curso-input">Curso seleccionado:</label>
+            <input type="text" id="curso-input" name="Curso_Seleccionado" readonly aria-readonly="true"> 
         </div>
         <div class="form-group">
-            <label>Precio a pagar:</label>
-            <input type="text" id="precio-input" name="Precio_Marcado" readonly>
+            <label for="precio-input">Precio a pagar:</label>
+            <input type="text" id="precio-input" name="Precio_Marcado" readonly aria-readonly="true">
         </div>
     </div>
 
     <div class="form-group">
-        <label>Nombre completo:</label>
-        <input type="text" name="Nombre_Completo" placeholder="Ej. Juan Pérez" required>
+        <label for="nombre-completo">Nombre completo:</label>
+        <input type="text" id="nombre-completo" name="Nombre_Completo" placeholder="Ej. Juan Pérez" required aria-required="true">
     </div>
     
     <div class="form-group">
-        <label>Correo electrónico:</label>
-        <input type="email" name="Correo" placeholder="ejemplo@correo.com" required>
+        <label for="correo-inscripcion">Correo electrónico:</label>
+        <input type="email" id="correo-inscripcion" name="Correo" placeholder="ejemplo@correo.com" required aria-required="true">
     </div>
 
     <div class="form-group">
-        <label>Teléfono / WhatsApp:</label>
-        <input type="tel" name="Telefono" placeholder="+00 123 456 789" required>
+        <label for="telefono-inscripcion">Teléfono / WhatsApp:</label>
+        <input type="tel" id="telefono-inscripcion" name="Telefono" placeholder="+00 123 456 789" required aria-required="true">
+    </div>
+
+    <!-- Honeypot anti-spam -->
+    <div class="form-group honeypot" aria-hidden="true" style="display: none;">
+        <label for="website-inscripcion">No llenes este campo</label>
+        <input type="text" id="website-inscripcion" name="website" tabindex="-1" autocomplete="off">
     </div>
 
     <button type="submit" class="btn-primary btn-submit-full">Completar Inscripción</button>
 </form>
         </div>
     </section>
+    </main>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
