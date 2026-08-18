@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Vercel Static</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1 style="color: green; padding: 2rem;">✅ Vercel sirve archivos estáticos correctamente</h1>
+    <p>CSS cargado: <span id="css-test"></span></p>
+    <script src="js/main.js" defer></script>
+    <script>
+        document.getElementById('css-test').textContent = getComputedStyle(document.body).backgroundColor;
+    </script>
+</body>
+</html>
